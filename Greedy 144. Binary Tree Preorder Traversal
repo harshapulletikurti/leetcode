@@ -37,7 +37,6 @@ Follow up:
 
 Recursive solution is trivial, could you do it iteratively?
 
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -56,12 +55,12 @@ public:
         if (root==NULL)
             return;
         r.push_back(root->val);
-        pre(root->left,r);
-        pre(root->right,r);
+        pre_1(root->left,r);
+        pre_1(root->right,r);
         
     }
     
-    // Greedy 
+    // Greedy Iterative approach (****Preferred******)
     void pre(TreeNode* root, vector<int> &r){
         if (root==NULL)
             return;
