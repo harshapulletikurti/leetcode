@@ -32,6 +32,7 @@ The flattened tree should look like:
          \
           6
 
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -53,32 +54,34 @@ public:
         stack<TreeNode*> s;
         s.push(root);
         
+        TreeNode* head=NULL;
+        TreeNode** pNext;
+        pNext=&head;
+        
+        
         while (!s.empty()){
             TreeNode* p;
-            TreeNode** pNext=NULL;
+            
             
             p=s.top(); //assign
             s.pop();      //flush
-            
-            pNext=&root;
+           
             
             if(p->right != NULL)
                 s.push(p->right);
             if(p->left != NULL)
                 s.push(p->left);
             
-            if(!s.empty()){
-              p->right=s.top();
-              p->left=NULL; 
-              // *pNext->right=s.top();
-              // pNext=&((*pNext)->left) ;
-              // *pNext->left=NULL ;
-              
-            }
+            *pNext=p ;
+            pNext=&((*pNext)->right);
+            *pNext=NULL;
+            p->left=NULL;
             
         }
     }
 };
+
+
 
 
 
