@@ -60,7 +60,7 @@ public:
         
     }
     
-    // Greedy Iterative approach (****Preferred******)
+    //  Iterative approach (****Preferred******)
     void pre(TreeNode* root, vector<int> &r){
         if (root==NULL)
             return;
