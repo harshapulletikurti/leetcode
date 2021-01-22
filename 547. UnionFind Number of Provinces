@@ -1,0 +1,95 @@
+//
+There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
+
+A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+
+You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
+
+Return the total number of provinces.
+
+ 
+
+Example 1:
+
+
+Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+Output: 2
+Example 2:
+
+
+Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
+ 
+
+Constraints:
+
+1 <= n <= 200
+n == isConnected.length
+n == isConnected[i].length
+isConnected[i][j] is 1 or 0.
+isConnected[i][i] == 1
+isConnected[i][j] == isConnected[j][i]
+//
+
+
+Solution:
+
+class Solution {
+public:
+    int find(int a, vector<int> &p){
+        int tmp=a;
+        while(p[a]!=a){
+            a=p[a];
+        }
+        int curr;
+        while(p[tmp]!=tmp){
+             curr=tmp;
+             tmp=p[tmp];
+             p[curr]=a;
+         }
+         return a;
+    }
+        
+    void union_find( int a,int b, vector<int> &p){
+        if (a==b){
+
+        }
+        else{
+            cnt=cnt-1;
+            p[a]=b;
+        }
+    }
+        
+    int cnt=0;
+    
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        
+        int n=isConnected.size();
+        int parent_a, parent_b;
+        vector<int> p;
+        p.resize(n+1);
+        cnt=n;
+        for(int i=0;i<n;i++){   // assign itself to the parent
+            p[i]=i;
+        }
+        
+        
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                if (i==j)  // diagonal elements
+                    continue;
+                else{
+                    if(isConnected[i][j]==1){
+                        parent_a=find(i,p);
+                        parent_b=find(j,p);
+                        union_find(parent_a,parent_b,p);
+                    }
+                    
+                    
+                    
+                }
+            }
+        }
+        return cnt;
+    }
+};
