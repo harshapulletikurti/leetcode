@@ -28,3 +28,59 @@ Constraints:
 triangle[0].length == 1
 triangle[i].length == triangle[i - 1].length + 1
 -104 <= triangle[i][j] <= 104
+
+
+Solution:
+
+Method 1:
+
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        
+        int m=triangle.size();
+        if(m==1)
+            return triangle[0][0];
+        
+        vector<int> f;
+        f.resize(m);
+        
+        //assign the last row to the function f
+        for (int i=0;i<m;i++)
+            f[i]=triangle[m-1][i];
+        //bottom to top approach
+        
+        for (int i=m-2;i>=0;i--){
+            for(int j=0;j<=i;j++){
+                f[j]=triangle[i][j]+ min(f[j],f[j+1]);
+            }
+        }
+        return f[0];
+    }
+};
+
+
+Method 2:
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        
+        int m=triangle.size();
+       
+        
+        
+        for(int i=1;i<m;i++){
+            triangle[i][0]+=triangle[i-1][0];
+            triangle[i][i]+=triangle[i-1][i-1]; 
+        }
+        
+        for(int i=2;i<m;i++){
+            for (int j=1;j<i;j++){
+                triangle[i][j]+= min(triangle[i-1][j],triangle[i-1][j-1]);
+                
+            }
+        }
+        
+        return *min_element( triangle[m-1].begin() , triangle[m-1].end() );
+    }
+};
