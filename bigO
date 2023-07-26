@@ -1,0 +1,123 @@
+Anything divided by 2 = log N  
+
+½ + ¼ + ⅛ + 1/16 + 1/infinite = 1
+
+ 	int a = 0, b = 0;    
+        for (i = 0; i < N; i++) {
+            a = a + rand();  
+        }
+        for (j = 0; j < M; j++) {
+            b = b + rand();
+        }
+              O(M+N)
+       int a = 0, b = 0;    
+    for (i = 0; i < N; i++) {    <<= N
+        for (j = 0; j < N; j++) {    /// N + N + N + N + N ….          = N * N 
+            a = a + j;
+        }
+    } 
+      //O(N^2)
+    for (k = 0; k < N; k++) {
+        b = b + k;
+    }
+       //O(N)
+O(N^2 + N) = O(N(N+1))  = O(N^2).
+
+
+
+       int a = 0;
+    for (i = 0; i < N; i++) {
+        for (j = N; j > i; j--) {
+            a = a + i + j;
+        }
+    }
+I = 0, j > 0,  N times
+   j = N   ⇒ a=...
+  J = N-1 => a=...
+  J = N-2 => a=..
+  J = N-3=> a=...
+  ….
+  J = 1 => a=..
+  J = 0 => XX
+I=1 , N -1 
+I=2 , N -2 
+I=3,  N - 3
+I=N-1, N - (N-1) = 1
+N +  (N-1) + (N-2) + (N-3) + …. + 1 = N * (N+1) / 2 = N * N / 2 =  N * N 
+1 +       2 + 3 + 4 +...+ N    = A => A = 101 * 100 / 2
+N + 99 +  98 + 97 +..+    1 = B
+A+ B = 101 + 101 + 101+ 101 +...+ 101 = 2A = 101 * 100  
+
+1 +        2 + 3 +  …+ N = A
+N + (N-1)  + N-2 +   + 1 = A
+N+1 + N+1  + N+1+ ….+N+1 = 
+N*(N+1) / 2  
+
+
+
+
+
+        int a = 0, i = N;
+        while (i > 0) {
+            a += i;
+            i /= 2;
+        }
+O(lgN)
+   
+ 
+ 
+N = 4, i = 4, 
+            I = 2, i = 1, i=0        => 2 times x times
+N = 8, i= 8
+           I = 4, i = 2, i = 1,     => 3 times x times
+N = 10, i =10
+          I = 5, i = 2, i =1 ⇒ 3 times
+N = 16, i = 16   => 4 times
+N  =32 => 5 times
+N = 64 => 6 times
+N = 128 => 2^x
+N = 1024 ⇒ log(1024) = 10
+ 
+N = 2 ^ x  ⇒ x = logN 
+ 
+            
+           
+ 
+ 
+
+
+
+        int count = 0;
+        for (int i = N; i > 0; i /= 2) {
+            for (int j = 0; j < i; j++) {
+                count += 1;
+            }
+        }
+   
+N * (N-1) + N/2 * (N/2-1)  + 
+N=6,
+i=6 , j = 0 till 5          N (0-n-1) = N
+i=3,j= 0 till 2        N/2 (0 - n/2-1)= n/2
+i=1, j 1 time    N/4 (0 - n/4-1) = N/4
+              
+                 
+ N + N/2+n/4      +1 = 
+N(1+½+¼+        1/N)
+½ + ¼ + ⅛ + 1/16 + 1/infinite = 1
+
+    int i, j, k = 0;
+    for (i  = n/2; i <= n; i++) {
+        for (j = 2; j <= n; j = j * 2) {
+            k = k + n/2;
+        }
+    }
+N=8 N =16
+i=4 , j=2,4,8   = 2 pow 3 i=8, j=2,4,8,16  2 pow 4
+i=5  j=,2,4,8  2 i=9,j=2,4,8,16
+i=6 j=2,4,8 i=10, 2,4,8,16
+i=7 , j=2,4,8
+i=8, j=2,4,8
+
+i= (N/2)+1 
+j= 2 pow x=log N
+(n/2+1)log N=   n/2logn= nlogn
