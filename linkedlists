@@ -1,0 +1,37 @@
+https://prosenc.blogspot.com/2015/08/insert-node-at-head-of-linked-list.html
+
+https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linked-list/problem
+
+
+SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* llist, int data) {
+SinglyLinkedListNode *newNode=new SinglyLinkedListNode(data) ;
+if (llist==NULL){
+llist=newNode;
+}
+else{
+newNode->next=llist;
+llist=newNode;
+}
+return llist;
+}
+
+
+
+https://leetcode.com/problems/fibonacci-number/submissions/
+
+
+class Solution {
+public:
+    int fib(int N) {
+        vector<int> v;   
+        v.resize(n+1);
+        v[0]=0;
+        v[1]=1;
+        
+        for (int i=2;i<n;i++){
+            v[i]=v[i-1]+v[i-2];
+            
+        }
+    }
+};
+
