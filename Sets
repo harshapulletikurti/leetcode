@@ -1,0 +1,29 @@
+https://www.hackerrank.com/challenges/cpp-sets/problem
+
+
+
+int main() {
+/* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+int n,op,val;
+set<int> s;
+cin>> n;
+for (int i=0;i<n;i++)
+{
+cin >> op>>val;
+// add an element
+if (op == 1) {
+s.insert(val);
+} else if (op == 2) {
+s.erase(val);
+} else if (op == 3) {
+auto itr=s.find(val);
+if (itr == s.end()) {
+cout<<"No"<<endl;
+} else {
+cout << "Yes"<<endl;
+}
+}
+}
+return 0;
+}
+
